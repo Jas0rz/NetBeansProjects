@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /**
  *
- * @author Jason McConnell
+ * @author This was indeed made by jas0rz, but im changing this to test github.
  */
 class CalcBrain implements Calculations {
     private String currentDigits;
