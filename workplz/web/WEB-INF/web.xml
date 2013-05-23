@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <description>Shopping Web App for COMP 173</description>
+    <display-name>Shopping</display-name>
+    <servlet>
+        <description>Totals the items in the shopping cart</description>
+        <servlet-name>AddToCart</servlet-name>
+        <servlet-class>servlets.AddToCart</servlet-class>
+        <init-param>
+            <description>Go back to shopping page after processing cart</description>
+            <param-name>redirectPage</param-name>
+            <param-value>Shopping</param-value>
+        </init-param>
+        <init-param>
+            <param-name>numberErrorPage</param-name>
+            <param-value>BadNumber</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <description>Handles shopping cart checkout</description>
+        <servlet-name>CheckOut</servlet-name>
+        <jsp-file>/CheckOut.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Shopping</servlet-name>
+        <jsp-file>/Shopping.jsp</jsp-file>
+        <init-param>
+            <description>After selecting Items, add them to cart</description>
+            <param-name>nextPage</param-name>
+            <param-value>AddToCart</param-value>
+		        </init-param>
+        <init-param>
+            <description>Check out when done shopping</description>
+            <param-name>checkOutPage</param-name>
+            <param-value>CheckOut</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <description>Welcome Page for Shopping</description>
+        <servlet-name>StartShopping</servlet-name>
+        <jsp-file>/StartShopping.jsp</jsp-file>
+        <init-param>
+            <description>Next JSP page in shopping experience</description>
+            <param-name>nextPage</param-name>
+            <param-value>GetLoginData</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>GetLoginData</servlet-name>
+        <jsp-file>/GetLoginData.jsp</jsp-file>
+        <init-param>
+            <param-name>nextPage</param-name>
+            <param-value>Shopping</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>BadNumber</servlet-name>
+        <jsp-file>/BadNumber.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddToCart</servlet-name>
+        <url-pattern>/AddToCart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckOut</servlet-name>
+        <url-pattern>/CheckOut</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Shopping</servlet-name>
+        <url-pattern>/Shopping</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StartShopping</servlet-name>
+        <url-pattern>/StartShopping</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetLoginData</servlet-name>
+        <url-pattern>/GetLoginData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BadNumber</servlet-name>
+        <url-pattern>/BadNumber</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>StartShopping</welcome-file>
+    </welcome-file-list>
+</web-app>
